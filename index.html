@@ -28,6 +28,7 @@
         
 	</div>
 	<div data-role="content">
+    	<div id="testResults"></div>
     	<div id="test"></div>
     	<div id="smallImage"></div>
 		<ul data-role="listview" data-inset="true">
@@ -48,13 +49,14 @@
     	<a class="t2m-boton" id="photo"><span class="t2m-login-white"></span><span id="xyzz">LOG IN</span></a>
         <a class="t2m-boton" id="call"><span class="t2m-phone-white"></span><span id="xyz">CALL</span></a>
         <a class="t2m-boton" id="text"><span class="t2m-sms-white"></span><span id="xyzz">TEXT</span></a>
-        <a class="t2m-boton" id="camera" onClick="capturePhoto();"><span class="t2m-camera-white"></span><span id="xyzz">PICTURE</span></a>
+        <a class="t2m-boton" id="camera" onClick="capturePhoto(); return false;"><span class="t2m-camera-white"></span><span id="xyzz">PICTURE</span></a>
         
     </div>
    <script>
    
    function capturePhoto() {
 	   
+	   $("#testResults").append("<br/>capturePhoto() running");
 		// Take picture using device camera and retrieve image as base64-encoded string
 		  navigator.camera.getPicture(uploadPhoto, onFail, { quality: 100,targetWidth: 700,
 				targetHeight:600,
@@ -72,7 +74,7 @@
     }
 
 	function uploadPhoto(imageURI){
-		
+		 $("#testResults").append("<br/>uploadPhote() running");
 			var options = new FileUploadOptions();
 				options.fileKey="file";
 				options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1)+'.jpg';
