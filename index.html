@@ -52,10 +52,173 @@
         <a class="t2m-boton" id="camera" onClick="capturePhoto(); return false;"><span class="t2m-camera-white"></span><span id="xyzz">PICTURE</span></a>
         
     </div>
-   <script>
+   
+	</div>
+     
+</div>
+
+<div data-role="page" id="page2">
+	<div data-role="header">
+		<h1 id="titleBaby">Page Two</h1>
+	</div>
+	<div data-role="content">	
+		<div class="b"></div>
+	</div>
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div>
+</div>
+
+<div data-role="page" id="page3">
+	<div data-role="header">
+		<h1 id="titleBaby">Page Two</h1>
+	</div>
+	<div data-role="content">	
+		<div class="b"></div>		
+	</div>
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div>
+</div>
+
+<div data-role="page" id="page4">
+	<div data-role="header">
+		<h1>Page Four</h1>
+	</div>
+	<div data-role="content">	
+		<div class="b"></div>		
+	</div>
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div>
+</div>
+
+</body>
+</html>
+
+<script type="text/javascript">
+
+
+	var id = 9;
+	$(document).ready(function() {
+		
+		
+	
+	<!-- ------------------------------------------------------------------------------------------------>
+	//API -> this is where pages come from 
+	//http://m.turn2mobile.com/mobile/listofpages.php?iduser=9
+	function setSomeScripts(){
+		
+	var doc_pages = document.createElement("script");
+	doc_pages.src = "http://m.turn2mobile.com/mobile/listofpages.php?iduser="+id+"&callback=listofpages";
+	document.getElementsByTagName('head')[0].appendChild(doc_pages);
+	
+	//get the logo and background image for mobile site and app
+	var doc = document.createElement("script");
+	doc.src = "http://m.turn2mobile.com/mobile/logoandbackground.php?iduser="+id+"&callback=logoandbackground";
+	document.getElementsByTagName('head')[0].appendChild(doc);
+	
+	//css. Gets the css for mobile or app
+	var doc_css = document.createElement("link");
+	doc_css.setAttribute("type", "text/css");
+	doc_css.setAttribute("rel", "stylesheet");
+	doc_css.setAttribute("href", "http://m.turn2mobile.com/mobile/final-customcss.php?iduser="+id);
+	
+	
+	document.getElementsByTagName('head')[0].appendChild(doc_css);
+	}
+	
+	<!-- ------------------------------------------------------------------------------------------------>
+	
+	var businessName = "fixxxx"; //name of business
+	//var who = "calmexmusicgrouptv1"; //youtube feed name
+	var appInfo = " | App by turn2mobile.com";
+	var d = new Date();
+	var year = d.getFullYear();
+	 
+	$("h1").empty().append(businessName);
+	$("h4").empty().append(name+" "+year+" "+appInfo);
+	$("title").empty().append(businessName+" App");		
+	
+	
+	
+	<!-- ********************************************************************************************************* -->
+	//execute the functions please
+	//very important
+	setSomeScripts();
+	
+	<!-- ********************************************************************************************************* -->
+
+    });
+	
+		
+		//sets logo and background
+		function logoandbackground(logoandbackground){
+				var logo = document.createElement("img");
+					logo.setAttribute("id", "logo");
+					logo.setAttribute("src", logoandbackground.logo);
+					console.log("logo created");
+					$("#logoPlaceHolder").append(logo);
+		}
+		
+		function BusinessInfo(BusinessInfo){
+			
+		}
+		
+		//sets list pages
+		function listofpages(listofpages){
+				for(var i=0; i<listofpages.length; i++){
+					console.log(listofpages[i].id);
+					
+					var li = document.createElement("li");
+						//li.setAttribute("id", i);
+						//li.setAttribute("title", listofpages[i].name);
+					var a  = document.createElement("a");
+						a.setAttribute("id", listofpages[i].id);
+						a.setAttribute("title", listofpages[i].name)
+						a.setAttribute("href", "#page3");
+						a.innerHTML = listofpages[i].name;
+						li.appendChild(a);
+						$("ul").append(li);
+						
+						
+						
+						
+		 			
+						
+					}
+				$("ul").listview("refresh");
+				
+								$("a").click( function(){
+							
+								if($(this).attr("id")){
+									//alert($(this).id)
+								id = $(this).attr("id");
+								console.log($(this).text());
+								console.log($(this).attr("id"));
+								$("h1").empty().append($(this).text());
+								$.ajax({
+									url: "http://m.turn2mobile.com/class/JosueMunoz.php?getInfo="+$(this).attr("id")+"&type=ready",
+									})
+									.done( function (page){
+									$(".b").empty().append(page);
+										})
+									}else{
+										$("h1").empty().append($(this).text());
+										}//if statement end
+							});
+				
+		}
+		
+
+</script>
+
+
+<script src="phonegap.js"></script>
+<script>
    
    // JavaScript Document
-
+document.addEventListener("deviceready",onDeviceReady,false);
     var pictureSource;   // picture source
     var destinationType; // sets the format of returned value 
 
@@ -171,167 +334,5 @@ function onDeviceReady() {
 			//setTimeout("animateThis()",5000);
 		}	
    
-   </script>
-	</div>
-     
-</div>
-
-<div data-role="page" id="page2">
-	<div data-role="header">
-		<h1 id="titleBaby">Page Two</h1>
-	</div>
-	<div data-role="content">	
-		<div class="b"></div>
-	</div>
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-	</div>
-</div>
-
-<div data-role="page" id="page3">
-	<div data-role="header">
-		<h1 id="titleBaby">Page Two</h1>
-	</div>
-	<div data-role="content">	
-		<div class="b"></div>		
-	</div>
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-	</div>
-</div>
-
-<div data-role="page" id="page4">
-	<div data-role="header">
-		<h1>Page Four</h1>
-	</div>
-	<div data-role="content">	
-		<div class="b"></div>		
-	</div>
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-	</div>
-</div>
-
-</body>
-</html>
-
-<script type="text/javascript">
-
-
-	var id = 9;
-	$(document).ready(function() {
-		
-		
-	document.addEventListener("deviceready",onDeviceReady,false);
-	<!-- ------------------------------------------------------------------------------------------------>
-	//API -> this is where pages come from 
-	//http://m.turn2mobile.com/mobile/listofpages.php?iduser=9
-	function setSomeScripts(){
-		
-	var doc_pages = document.createElement("script");
-	doc_pages.src = "http://m.turn2mobile.com/mobile/listofpages.php?iduser="+id+"&callback=listofpages";
-	document.getElementsByTagName('head')[0].appendChild(doc_pages);
-	
-	//get the logo and background image for mobile site and app
-	var doc = document.createElement("script");
-	doc.src = "http://m.turn2mobile.com/mobile/logoandbackground.php?iduser="+id+"&callback=logoandbackground";
-	document.getElementsByTagName('head')[0].appendChild(doc);
-	
-	//css. Gets the css for mobile or app
-	var doc_css = document.createElement("link");
-	doc_css.setAttribute("type", "text/css");
-	doc_css.setAttribute("rel", "stylesheet");
-	doc_css.setAttribute("href", "http://m.turn2mobile.com/mobile/final-customcss.php?iduser="+id);
-	
-	
-	document.getElementsByTagName('head')[0].appendChild(doc_css);
-	}
-	
-	<!-- ------------------------------------------------------------------------------------------------>
-	
-	var businessName = "fixxxx"; //name of business
-	//var who = "calmexmusicgrouptv1"; //youtube feed name
-	var appInfo = " | App by turn2mobile.com";
-	var d = new Date();
-	var year = d.getFullYear();
-	 
-	$("h1").empty().append(businessName);
-	$("h4").empty().append(name+" "+year+" "+appInfo);
-	$("title").empty().append(businessName+" App");		
-	
-	
-	
-	<!-- ********************************************************************************************************* -->
-	//execute the functions please
-	//very important
-	setSomeScripts();
-	
-	<!-- ********************************************************************************************************* -->
-
-    });
-	
-		
-		//sets logo and background
-		function logoandbackground(logoandbackground){
-				var logo = document.createElement("img");
-					logo.setAttribute("id", "logo");
-					logo.setAttribute("src", logoandbackground.logo);
-					console.log("logo created");
-					$("#logoPlaceHolder").append(logo);
-		}
-		
-		function BusinessInfo(BusinessInfo){
-			
-		}
-		
-		//sets list pages
-		function listofpages(listofpages){
-				for(var i=0; i<listofpages.length; i++){
-					console.log(listofpages[i].id);
-					
-					var li = document.createElement("li");
-						//li.setAttribute("id", i);
-						//li.setAttribute("title", listofpages[i].name);
-					var a  = document.createElement("a");
-						a.setAttribute("id", listofpages[i].id);
-						a.setAttribute("title", listofpages[i].name)
-						a.setAttribute("href", "#page3");
-						a.innerHTML = listofpages[i].name;
-						li.appendChild(a);
-						$("ul").append(li);
-						
-						
-						
-						
-		 			
-						
-					}
-				$("ul").listview("refresh");
-				
-								$("a").click( function(){
-							
-								if($(this).attr("id")){
-									//alert($(this).id)
-								id = $(this).attr("id");
-								console.log($(this).text());
-								console.log($(this).attr("id"));
-								$("h1").empty().append($(this).text());
-								$.ajax({
-									url: "http://m.turn2mobile.com/class/JosueMunoz.php?getInfo="+$(this).attr("id")+"&type=ready",
-									})
-									.done( function (page){
-									$(".b").empty().append(page);
-										})
-									}else{
-										$("h1").empty().append($(this).text());
-										}//if statement end
-							});
-				
-		}
-		
-
+  
 </script>
-
-
-<script src="phonegap.js"></script>
-
