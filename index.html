@@ -81,7 +81,7 @@
 		}
     // Wait for Cordova to connect with the device
     //
-document.addEventListener("deviceready",onDeviceReady,false);
+
 
     // Cordova is ready to be used!
     //
@@ -220,7 +220,7 @@ function onDeviceReady() {
 
 	var id = 9;
 	$(document).ready(function() {
-	
+	document.addEventListener("deviceready",onDeviceReady,false);
 	<!-- ------------------------------------------------------------------------------------------------>
 	//API -> this is where pages come from 
 	//http://m.turn2mobile.com/mobile/listofpages.php?iduser=9
@@ -331,5 +331,5 @@ function onDeviceReady() {
 </script>
 
 
-<script src="phonegap.js" type="text/javascript" language="javascript"></script>
+<script src="phonegap.js"></script>
 
