@@ -54,6 +54,48 @@
     </div>
    <script>
    
+   // JavaScript Document
+
+    var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value 
+
+
+
+        function win(r) {
+           $("#testResults").append("Code = " + r.responseCode);
+           $("#testResults").append("Response = " + r.response);
+           $("#testResults").append("Sent = " + r.bytesSent);
+        }
+
+        function fail(error) {
+            $("#testResults").append("An error has occurred: Code = " + error.code);
+            $("#testResults").append("upload error source " + error.source);
+            $("#testResults").append("upload error target " + error.target);
+			/*
+			this.imageURI = imageURI;
+										this.imageData = imageData;
+										this.FILE_URI = FILE_URI;
+										this.DATA_URL = DATA_URL;
+        */
+		
+		}
+    // Wait for Cordova to connect with the device
+    //
+document.addEventListener("deviceready",onDeviceReady,false);
+
+    // Cordova is ready to be used!
+    //
+	
+function onDeviceReady() {
+	
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
+		
+		
+    }
+
+   
+   
    function capturePhoto() {
 	   
 	   $("#testResults").append("<br/>capturePhoto() running");
@@ -71,6 +113,7 @@
 		}
 	function onFail(message){
      alert('Failed because: ' + message);
+	 $("#testResults").append("<br/>onFail() running");
     }
 
 	function uploadPhoto(imageURI){
@@ -96,7 +139,7 @@
 		//this.FILE_URI = FILE_URI;
 	
 	 
-	   console.log("Picture created succefully.");
+	  $("#testResults").append("<br/>Picture created succefully.");
 	//var E = document.getElementById('error');
 		
       // Get image handle
@@ -115,6 +158,7 @@
 	
 	function imageLoaded()//image loaded will display after image loaded
 	{
+		$("#testResults").append("<br/>imageLoaded() running");
 		var x = document.getElementById('test');
 		var text = document.createTextNode('Image Uploaded :)');
 		var green = document.createElement('div');
