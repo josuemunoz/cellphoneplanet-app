@@ -33,4 +33,9 @@ Josue Munoz
 	<preference name="ios-statusbarstyle" 			value="black-opaque" />
 	<preference name="detect-data-types" 			value="true" />
 	
+	<icon src="assets/icon.png" />
+
+<gap:splash src="assets/splash_screen.png" />
+	
+	
 </widget>

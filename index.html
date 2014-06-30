@@ -5,28 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title></title>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 <link href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css"/>
 <link href="http://m.turn2mobile.com/mobile/mobileTest/css.css" rel="stylesheet" type="text/css"/>
 <style type="text/css">
 
 </style>
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.6.4.min.js" type="text/javascript"></script>
 <script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js" type="text/javascript"></script>
 
 </head> 
 <body> 
 <div data-role="page" id="page">
-	<div data-role="header">
+	
 		<!--
+        <div data-role="header">
         <h1>hi</h1>
+        </div>
         -->
         <div class="a">
         <div id="logoPlaceHolder"></div>
         </div>
         
-	</div>
+	
 	<div data-role="content">
     	<div id="testResults"></div>
     	<div id="test"></div>
@@ -40,18 +42,20 @@
         </ul>		
 	</div>
     
-    
-    
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-        <div id="phoneStuff">
+     <div id="phoneStuff">
     	
-    	<a class="t2m-boton" id="photo"><span class="t2m-login-white"></span><span id="xyzz">LOG IN</span></a>
-        <a class="t2m-boton" id="call"><span class="t2m-phone-white"></span><span id="xyz">CALL</span></a>
-        <a class="t2m-boton" id="text"><span class="t2m-sms-white"></span><span id="xyzz">TEXT</span></a>
-        <a class="t2m-boton" id="camera" onClick="capturePhoto(); return false;"><span class="t2m-camera-white"></span><span id="xyzz">PICTURE</span></a>
+    	<a class="t2m-boton" id="login"><span></span><span id="xyzz">LOG IN</span></a>
+        <a class="t2m-boton" id="call"><span></span><span id="xyz">CALL</span></a>
+        <a class="t2m-boton" id="text"><span></span><span id="xyzz">TEXT</span></a>
+        <a class="t2m-boton" id="camera" onClick="capturePhoto(); return false;"><span></span><span id="xyzz">PICTURE</span></a>
         
     </div>
+    
+    
+    
+	<div data-role="footer" class="c">
+		Page Footer
+       
    
 	</div>
      
@@ -105,6 +109,14 @@
 		
 	
 	<!-- ------------------------------------------------------------------------------------------------>
+	
+	var doc_css = document.createElement("link");
+	doc_css.setAttribute("type", "text/css");
+	doc_css.setAttribute("rel", "stylesheet");
+	doc_css.setAttribute("href", "http://m.turn2mobile.com/mobile/final-customcss.php?iduser="+id);
+	document.getElementsByTagName('head')[0].appendChild(doc_css);
+	
+	
 	//API -> this is where pages come from 
 	//http://m.turn2mobile.com/mobile/listofpages.php?iduser=9
 	function setSomeScripts(){
@@ -119,13 +131,8 @@
 	document.getElementsByTagName('head')[0].appendChild(doc);
 	
 	//css. Gets the css for mobile or app
-	var doc_css = document.createElement("link");
-	doc_css.setAttribute("type", "text/css");
-	doc_css.setAttribute("rel", "stylesheet");
-	doc_css.setAttribute("href", "http://m.turn2mobile.com/mobile/final-customcss.php?iduser="+id);
 	
 	
-	document.getElementsByTagName('head')[0].appendChild(doc_css);
 	}
 	
 	<!-- ------------------------------------------------------------------------------------------------>
@@ -146,12 +153,13 @@
 	//execute the functions please
 	//very important
 	setSomeScripts();
-	
+
 	<!-- ********************************************************************************************************* -->
 
     });
 	
 		
+			
 		//sets logo and background
 		function logoandbackground(logoandbackground){
 				var logo = document.createElement("img");
@@ -159,7 +167,17 @@
 					logo.setAttribute("src", logoandbackground.logo);
 					console.log("logo created");
 					$("#logoPlaceHolder").append(logo);
+					
+					//$("span").addClass(logoandbackground.iconClass);
+					console.log($("span").attr("class"));
+					
+					// Will set the classes for the icons
+					$("#login >span").first().addClass('t2m-login-'+logoandbackground.iconClass);
+					$("#call >span").first().addClass('t2m-phone-'+logoandbackground.iconClass);
+					$("#text >span").first().addClass('t2m-sms-'+logoandbackground.iconClass);
+					$("#camera >span").first().addClass('t2m-camera-'+logoandbackground.iconClass);
 		}
+		
 		
 		function BusinessInfo(BusinessInfo){
 			
@@ -189,8 +207,8 @@
 					}
 				$("ul").listview("refresh");
 				
+				
 								$("a").click( function(){
-							
 								if($(this).attr("id")){
 									//alert($(this).id)
 								id = $(this).attr("id");
@@ -288,7 +306,7 @@ function onDeviceReady() {
 				options.chunkedMode = false;
 				var ft = new FileTransfer();
 				//var c = localStorage.getItem('userId');
-				var c = 1000;
+				var c = 256;
 
 				ft.upload(imageURI, "http://www.salecarro.com/uploadTest/test_upload.php?user="+c, win, fail, options, true);
 				onPhotoDataSuccess(imageURI);				
