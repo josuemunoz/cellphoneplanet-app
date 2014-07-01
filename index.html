@@ -42,7 +42,13 @@
         </ul>		
 	</div>
     
-     <div id="phoneStuff">
+    
+    
+    <div id="more" class="more"><img src="assets/MORE_03.png" width="95" height="65"></div>
+	<div data-role="footer" class="c">
+		<h4>Page Footer</h4>
+       
+    <div id="phoneStuff">
     	
     	<a class="t2m-boton" id="login"><span></span><span id="xyzz">LOG IN</span></a>
         <a class="t2m-boton" id="call"><span></span><span id="xyz">CALL</span></a>
@@ -51,12 +57,6 @@
         
     </div>
     
-    
-    
-	<div data-role="footer" class="c">
-		Page Footer
-       
-   
 	</div>
      
 </div>
@@ -68,6 +68,7 @@
 	<div data-role="content">	
 		<div class="b"></div>
 	</div>
+    
 	<div data-role="footer">
 		<h4>Page Footer</h4>
 	</div>
@@ -107,7 +108,9 @@
 	$(document).ready(function() {
 		
 		
-	
+	$("#more").click( function (){
+			$(".c").slideToggle('slow');
+		});
 	<!-- ------------------------------------------------------------------------------------------------>
 	
 	var doc_css = document.createElement("link");
@@ -240,6 +243,14 @@
    
    // JavaScript Document
 document.addEventListener("deviceready",onDeviceReady,false);
+document.addEventListener("menubutton", yourCallbackFunction, false);
+	
+	function yourCallbackfunction(){
+		$("#more").click( function (){
+			$(".c").slideToggle('slow');
+		});
+		}
+	
     var pictureSource;   // picture source
     var destinationType; // sets the format of returned value 
 
@@ -271,7 +282,8 @@ document.addEventListener("deviceready",onDeviceReady,false);
     //
 	
 function onDeviceReady() {
-	
+		
+
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
 		
