@@ -248,9 +248,9 @@ document.addEventListener("deviceready",onDeviceReady,false);
 	
 	function yourCallbackFunction(){
 		//$("#more").click( function (){
-			$("menubutton").click( function(){
+			//$("menubutton").click( function(){
 				$(".c").slideToggle('slow');
-				})
+				//})
 			
 			//alert("you cliked me");
 		//});
@@ -288,10 +288,10 @@ document.addEventListener("deviceready",onDeviceReady,false);
 	
 function onDeviceReady() {
 		
-
+		document.addEventListener("menubutton", yourCallbackFunction, false);
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
-		document.addEventListener("menubutton", yourCallbackFunction, false);
+		
 		
     }
 
