@@ -162,6 +162,13 @@
 			
 		//sets logo and background
 		function logoandbackground(logoandbackground){
+			
+			// Will set the classes for the icons
+					$("#login >span").first().addClass('t2m-login-'+logoandbackground.iconClass);
+					$("#call >span").first().addClass('t2m-phone-'+logoandbackground.iconClass);
+					$("#text >span").first().addClass('t2m-sms-'+logoandbackground.iconClass);
+					$("#camera >span").first().addClass('t2m-camera-'+logoandbackground.iconClass);
+			
 				var logo = document.createElement("img");
 					logo.setAttribute("id", "logo");
 					logo.setAttribute("src", logoandbackground.logo);
@@ -171,11 +178,7 @@
 					//$("span").addClass(logoandbackground.iconClass);
 					console.log($("span").attr("class"));
 					
-					// Will set the classes for the icons
-					$("#login >span").first().addClass('t2m-login-'+logoandbackground.iconClass);
-					$("#call >span").first().addClass('t2m-phone-'+logoandbackground.iconClass);
-					$("#text >span").first().addClass('t2m-sms-'+logoandbackground.iconClass);
-					$("#camera >span").first().addClass('t2m-camera-'+logoandbackground.iconClass);
+					
 		}
 		
 		
