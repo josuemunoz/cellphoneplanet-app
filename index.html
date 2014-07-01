@@ -106,7 +106,8 @@
 
 	var id = 9;
 	$(document).ready(function() {
-		
+		document.addEventListener("deviceready",onDeviceReady,false);
+document.addEventListener("menubutton", yourCallbackFunction, false);
 		
 	$("#more").click( function (){
 			$(".c").slideToggle('slow');
@@ -242,13 +243,13 @@
 <script>
    
    // JavaScript Document
-document.addEventListener("deviceready",onDeviceReady,false);
-document.addEventListener("menubutton", yourCallbackFunction, false);
+
 	
 	function yourCallbackFunction(){
-		$("#more").click( function (){
+		//$("#more").click( function (){
 			$(".c").slideToggle('slow');
-		});
+			alert("you cliked me");
+		//});
 		}
 	
     var pictureSource;   // picture source
