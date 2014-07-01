@@ -46,6 +46,7 @@
     
     <div id="more" class="more"><img src="assets/MORE_03.png" width="95" height="65"></div>
 	<div data-role="footer" class="c">
+    
 		<h4>Page Footer</h4>
        
     <div id="phoneStuff">
@@ -106,8 +107,7 @@
 
 	var id = 9;
 	$(document).ready(function() {
-		document.addEventListener("deviceready",onDeviceReady,false);
-document.addEventListener("menubutton", yourCallbackFunction, false);
+
 		
 	$("#more").click( function (){
 			$(".c").slideToggle('slow');
@@ -243,12 +243,16 @@ document.addEventListener("menubutton", yourCallbackFunction, false);
 <script>
    
    // JavaScript Document
+document.addEventListener("deviceready",onDeviceReady,false);
 
 	
 	function yourCallbackFunction(){
 		//$("#more").click( function (){
-			$(".c").slideToggle('slow');
-			alert("you cliked me");
+			$("menubutton").click( function(){
+				$(".c").slideToggle('slow');
+				})
+			
+			//alert("you cliked me");
 		//});
 		}
 	
@@ -287,7 +291,7 @@ function onDeviceReady() {
 
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
-		
+		document.addEventListener("menubutton", yourCallbackFunction, false);
 		
     }
 
