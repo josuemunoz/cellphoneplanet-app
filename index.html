@@ -45,12 +45,13 @@
 	</div>
     
     
-    
+    <!-- fix this please
     <div id="more" class="more"><img src="assets/more.png" width="95" height="65"></div>
-	<div data-role="footer" class="c" style="display:none;">
+	-->
+    <div data-role="footer" class="c" style="display:none;">
     
 		
-       
+    <h4>Page Footer</h4>
     <div id="phoneStuff">
     	
     	<a class="t2m-boton" id="login"><span></span><span id="xyzz">LOG IN</span></a>
@@ -59,7 +60,7 @@
         <a class="t2m-boton" id="camera" onClick="capturePhoto(); return false;"><span></span><span id="xyzz">PICTURE</span></a>
         
     </div>
-    <h4>Page Footer</h4>
+    
 	</div>
      
 </div>
@@ -82,7 +83,7 @@
 		<h1 id="titleBaby">Page Two</h1>
 	</div>
 	<div data-role="content">	
-		<div class="b"></div>		
+		<div class="b" id="mainPage2"></div>		
 	</div>
 	<div data-role="footer">
 		<h4>Page Footer</h4>
@@ -213,29 +214,32 @@
 		}
 		
 		function getProducts(){
+			var a ="";
+			var li = "";
 			//http://mmcellphone.com/api/index.php?table=gallery
-			$.getJSON("http://mmcellphone.com/api/index.php?table=gallery&key=9", function(data){
+			$("#productsMenu").empty();
+			$.getJSON("http://mmcellphone.com/api/index.php?table=gallery&key=9", function(dataP){
 					console.log("running getJSON:");
-					for(var i=0; i<data.length; i++){
-						var a = document.createElement("a");
+					for(var i=0; i<dataP.length; i++){
+						a = document.createElement("a");
 						
-						 var li = document.createElement("li");
-						a.setAttribute("id", data[i].id);
+						li = document.createElement("li");
+						a.setAttribute("id", dataP[i].id);
 						a.setAttribute("name", i);
 						a.setAttribute("href", "#page5");
-						if(data[i].item_name != null){
-						a.innerHTML = data[i].item_name;
+						if(dataP[i].item_name != null){
+						a.innerHTML = dataP[i].item_name;
 						a.onclick = function test(){
 								console.log("function test running baby");
 								console.log(this.id);
 								console.log(this.name);
 								var img = document.createElement("img");
-									img.setAttribute("src", "http://cellphoneplanet.ca/images_cell_phones/thumb_"+data[this.name].image_filename);
+									img.setAttribute("src", "http://cellphoneplanet.ca/images_cell_phones/thumb_"+dataP[this.name].image_filename);
 									$("#displayProducts").empty();
-									$("#displayProducts").append("<h1>"+data[this.name].item_name+"</h1>");
+									$("#displayProducts").append("<h1>"+dataP[this.name].item_name+"</h1>");
 									$("#displayProducts").append(img);
-									$("#displayProducts").append("<h5>"+data[this.name].Description+"</h5>");
-									$("#displayProducts").append("<h5>"+data[this.name].brand+" "+ data[this.name].model+"</h5>");
+									$("#displayProducts").append("<h5>"+dataP[this.name].Description+"</h5>");
+									$("#displayProducts").append("<h5>"+dataP[this.name].brand+" "+ dataP[this.name].model+"</h5>");
 									//alert(data);
 			};
 
@@ -265,13 +269,15 @@
 		
 		//sets list pages
 		function listofpages(listofpages){
+				var a = '';
+				var li = '';
 				for(var i=0; i<listofpages.length; i++){
 					console.log(listofpages[i].id);
 					
-					var li = document.createElement("li");
+						li = document.createElement("li");
 						//li.setAttribute("id", i);
 						//li.setAttribute("title", listofpages[i].name);
-					var a  = document.createElement("a");
+						a  = document.createElement("a");
 						a.setAttribute("id", listofpages[i].id);
 						a.setAttribute("title", listofpages[i].name)
 						a.setAttribute("href", "#page3");
@@ -279,7 +285,23 @@
 						li.appendChild(a);
 						$("#mainmenu").append(li);
 						
-						
+						a.onclick = function r(){
+								if($(this).attr("id")){
+									//alert($(this).id)
+								id = $(this).attr("id");
+								console.log($(this).text());
+								console.log($(this).attr("id"));
+								$("h1").empty().append($(this).text());
+								$.ajax({
+									url: "http://m.turn2mobile.com/class/JosueMunoz.php?getInfo="+$(this).attr("id")+"&type=ready",
+									})
+									.done( function (page){
+									$("#mainPage2").empty().append(page);
+										})
+									}else{
+										$("h1").empty().append($(this).text());
+										}//if statement end
+							};
 						
 						
 		 			
@@ -287,7 +309,7 @@
 					}
 				$("#mainmenu").listview("refresh");
 				
-				
+				/*
 								$("a").click( function(){
 								if($(this).attr("id")){
 									//alert($(this).id)
@@ -305,7 +327,7 @@
 										$("h1").empty().append($(this).text());
 										}//if statement end
 							});
-				
+				*/
 		}
 		
 
