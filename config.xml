@@ -17,7 +17,6 @@ Josue Munoz
     <feature name="http://api.phonegap.com/1.0/media"/>
     <feature name="http://api.phonegap.com/1.0/device"/>
  
- 	<preference name="phonegap-version" 			value="5.2.0" />
   	<preference name="orientation"    				value="vertical" />
   	<preference name="target-device"    			value="universal" />
   	<preference name="fullscreen"       			value="false" />
