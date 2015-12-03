@@ -7,7 +7,7 @@
 <name>CELL PHONE PLANET</name>
 
 <description>
-CELL PHONE PLANET WORLD WIDE
+CELL PHONE PLANET WORLD WIDE cellllllll
 </description>
 
 <author href="http//www.45graphics.net" email="josue@45graphics.net.com">
@@ -22,7 +22,7 @@ Josue Munoz
     <feature name="http://api.phonegap.com/1.0/media"/>
     <feature name="http://api.phonegap.com/1.0/device"/>
  
- 	<preference name="phonegap-version" 			value="2.5.0" />
+ 	<preference name="phonegap-version" 			value="5.2.0" />
   	<preference name="orientation"    				value="vertical" />
   	<preference name="target-device"    			value="universal" />
   	<preference name="fullscreen"       			value="false" />
