@@ -8,12 +8,14 @@
 
 <link href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css"/>
 <link href="http://m.josue45.com/mobile/mobileTest/css.css" rel="stylesheet" type="text/css"/>
-<style type="text/css">
 
-</style>
+<!--
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+
 <script src="http://code.jquery.com/jquery-1.6.4.min.js" type="text/javascript"></script>
 <script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js" type="text/javascript"></script>
+
 
 </head> 
 <body> 
@@ -48,16 +50,16 @@
     <!-- fix this please
     <div id="more" class="more"><img src="assets/more.png" width="95" height="65"></div>
 	-->
-    <div data-role="footer" class="c" style="display:none;">
+    <div data-role="footer" id="m" class="c" style="">
     
 		
     <h4>Page Footer</h4>
     <div id="phoneStuff">
     	
-    	<a class="t2m-boton" id="login"><span></span><span id="xyzz">LOG IN</span></a>
+    	<a class="t2m-boton" id="login" onClick="logMeIn(); return FALSE"><span></span><span id="xyzz">LOG IN</span></a>
         <a class="t2m-boton" id="call"><span></span><span id="xyz">CALL</span></a>
         <a class="t2m-boton" id="text"><span></span><span id="xyzz">TEXT</span></a>
-        <a class="t2m-boton" id="camera" onClick="capturePhoto(); return false;"><span></span><span id="xyzz">PICTURE</span></a>
+        <a class="t2m-boton" id="camera" onClick="capturePhoto(); return FALSE"><span></span><span id="xyzz">PICTURE</span></a>
         
     </div>
     
@@ -91,7 +93,7 @@
 </div>
 
 <div data-role="page" id="page4">
-	<div data-role="header">
+	<div data-role="header" data-add-back-btn="true">
 		<h1>Page Four</h1>
 	</div>
 	<div data-role="content">	
@@ -126,20 +128,8 @@
 	var id = 9;
 	$(document).ready(function() {
 
-		
-	$("#more").click( function (){
-			$(".c").slideToggle('slow');
-			
-			if($("#more > img").attr("src") == "assets/more.png"){
-				$("#more > img").attr("src", "assets/less.png");
-				}else{
-					$("#more > img").attr("src", "assets/more.png");
-					}
-			
-			
-			console.log($("#more > img").attr("src"));
-			
-		});
+
+	
 	<!-- ------------------------------------------------------------------------------------------------>
 	
 	var doc_css = document.createElement("link");
@@ -190,8 +180,29 @@
 
     });
 	
+		function logMeIn(){
+				var username = prompt("Enter Username:", "username");
+				var password = prompt("Enter Password:", "password");
+				
+				if(username != "username" && password != "password"){
+					if(username != null && password != null){
+						//alert("welcome "+ username);
+						
+							$.post("http://cellphoneplanet.ca/api/index.php", {"user": username, "pass": password, "table": "Users", "logMeIn": "yes"}, function(data){
+								if(data){
+										alert("Welcome " + data[0].FullName);
+									}else{
+										alert("Info provided is incorrect!");
+										}
+								});
+							//.done()
+						}
+					}else{
+							alert("Please provide the right information");
+							}
+			}
 		
-			
+		
 		//sets logo and background
 		function logoandbackground(logoandbackground){
 			
@@ -334,22 +345,13 @@
 </script>
 
 
-<script src="phonegap.js"></script>
 <script>
    
    // JavaScript Document
-document.addEventListener("deviceready",onDeviceReady,false);
 
+
+document.addEventListener("deviceready",onDeviceReady,false);
 	
-	function yourCallbackFunction(){
-		//$("#more").click( function (){
-			//$("menubutton").click( function(){
-				$(".c").slideToggle('slow');
-				//})
-			
-			//alert("you cliked me");
-		//});
-		}
 	
     var pictureSource;   // picture source
     var destinationType; // sets the format of returned value 
@@ -383,14 +385,24 @@ document.addEventListener("deviceready",onDeviceReady,false);
 	
 function onDeviceReady() {
 		
-		document.addEventListener("menubutton", yourCallbackFunction, false);
+		
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
-		
-		
+		console.warn("ready to go");
+		document.addEventListener("menubutton", hi, false);
+
     }
 
    
+
+function hi(){
+		
+				$(".c").slideToggle('slow');
+			
+			
+			
+		
+		}
    
    function capturePhoto() {
 	   
@@ -469,3 +481,4 @@ function onDeviceReady() {
    
   
 </script>
+<script src="cordova.js"></script>
