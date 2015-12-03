@@ -7,7 +7,7 @@
 
 
 <link href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css"/>
-<link href="http://m.turn2mobile.com/mobile/mobileTest/css.css" rel="stylesheet" type="text/css"/>
+<link href="http://m.josue45.com/mobile/mobileTest/css.css" rel="stylesheet" type="text/css"/>
 <style type="text/css">
 
 </style>
@@ -145,21 +145,21 @@
 	var doc_css = document.createElement("link");
 	doc_css.setAttribute("type", "text/css");
 	doc_css.setAttribute("rel", "stylesheet");
-	doc_css.setAttribute("href", "http://m.turn2mobile.com/mobile/final-customcss.php?iduser="+id);
+	doc_css.setAttribute("href", "http://m.josue45.com/mobile/final-customcss.php?iduser="+id);
 	document.getElementsByTagName('head')[0].appendChild(doc_css);
 	
 	
 	//API -> this is where pages come from 
-	//http://m.turn2mobile.com/mobile/listofpages.php?iduser=9
+	//http://m.josue45.com/mobile/listofpages.php?iduser=9
 	function setSomeScripts(){
 		
 	var doc_pages = document.createElement("script");
-	doc_pages.src = "http://m.turn2mobile.com/mobile/listofpages.php?iduser="+id+"&callback=listofpages";
+	doc_pages.src = "http://m.josue45.com/mobile/listofpages.php?iduser="+id+"&callback=listofpages";
 	document.getElementsByTagName('head')[0].appendChild(doc_pages);
 	
 	//get the logo and background image for mobile site and app
 	var doc = document.createElement("script");
-	doc.src = "http://m.turn2mobile.com/mobile/logoandbackground.php?iduser="+id+"&callback=logoandbackground";
+	doc.src = "http://m.josue45.com/mobile/logoandbackground.php?iduser="+id+"&callback=logoandbackground";
 	document.getElementsByTagName('head')[0].appendChild(doc);
 	
 	//css. Gets the css for mobile or app
@@ -171,7 +171,7 @@
 	
 	var businessName = "fixxxx"; //name of business
 	//var who = "calmexmusicgrouptv1"; //youtube feed name
-	var appInfo = " | App by turn2mobile.com";
+	var appInfo = " | App by josue45.com";
 	var d = new Date();
 	var year = d.getFullYear();
 	 
@@ -216,9 +216,9 @@
 		function getProducts(){
 			var a ="";
 			var li = "";
-			//http://mmcellphone.com/api/index.php?table=gallery
+			//http://cellphoneplanet.ca/api/index.php?table=gallery
 			$("#productsMenu").empty();
-			$.getJSON("http://mmcellphone.com/api/index.php?table=gallery&key=9", function(dataP){
+			$.getJSON("http://cellphoneplanet.ca/api/index.php?table=gallery&key=9", function(dataP){
 					console.log("running getJSON:");
 					for(var i=0; i<dataP.length; i++){
 						a = document.createElement("a");
@@ -293,7 +293,7 @@
 								console.log($(this).attr("id"));
 								$("h1").empty().append($(this).text());
 								$.ajax({
-									url: "http://m.turn2mobile.com/class/JosueMunoz.php?getInfo="+$(this).attr("id")+"&type=ready",
+									url: "http://m.josue45.com/class/JosueMunoz.php?getInfo="+$(this).attr("id")+"&type=ready",
 									})
 									.done( function (page){
 									$("#mainPage2").empty().append(page);
@@ -318,7 +318,7 @@
 								console.log($(this).attr("id"));
 								$("h1").empty().append($(this).text());
 								$.ajax({
-									url: "http://m.turn2mobile.com/class/JosueMunoz.php?getInfo="+$(this).attr("id")+"&type=ready",
+									url: "http://m.josue45.com/class/JosueMunoz.php?getInfo="+$(this).attr("id")+"&type=ready",
 									})
 									.done( function (page){
 									$(".b").empty().append(page);
